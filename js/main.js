@@ -1,13 +1,19 @@
 'use strict'
 
-var gSize = 100
+var gSize
 
 function onInit() {
+  gSize = 100
+  renderBalls()
+}
+
+function renderBalls() {
   const elBall1 = document.querySelector('.ball1')
   const elBall2 = document.querySelector('.ball2')
   const elBall3 = document.querySelector('.ball3')
   const elBall4 = document.querySelector('.ball4')
   const elBall5 = document.querySelector('.ball5')
+  const elBall6 = document.querySelector('.ball6')
 
   elBall1.style.width = gSize + 'px'
   elBall1.style.height = gSize + 'px'
@@ -20,6 +26,21 @@ function onInit() {
   elBall3.style.backgroundColor = getRandomColor()
   elBall4.style.backgroundColor = getRandomColor()
   elBall5.style.backgroundColor = getRandomColor()
+  elBall6.style.backgroundColor = getRandomColor()
+}
+
+function onResetGame() {
+  const elBall1 = document.querySelector('.ball1')
+  const elBall2 = document.querySelector('.ball2')
+  const elBall4 = document.querySelector('.ball4')
+
+  elBall1.dataset.maxDiameter = 400
+  elBall2.dataset.maxDiameter = 500
+  elBall4.innerText = 'Change max diameters'
+
+  document.body.style.backgroundColor = 'black'
+
+  onInit()
 }
 
 function onBallClick(elBall) {
