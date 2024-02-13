@@ -69,6 +69,7 @@ function onBallClick(elBall) {
   elBall.innerText = newSize
 
   addBallsState()
+  gStateIdx++
 }
 
 function onThirdBallClick() {
@@ -80,6 +81,7 @@ function onThirdBallClick() {
   elBall2.style.backgroundColor = tempColor
 
   addBallsState()
+  gStateIdx++
 }
 
 function onFourthBallClick(elBall) {
@@ -165,4 +167,46 @@ function addBallsState() {
   }
 
   gStates.push([ball1, ball2])
+}
+
+function onUndo() {
+  if (gStateIdx === 0) return
+  gStateIdx--
+  const currState = gStates[gStateIdx]
+  const ball1 = currState[0]
+  const ball2 = currState[1]
+
+  const elBall1 = document.querySelector('.ball1')
+  const elBall2 = document.querySelector('.ball2')
+
+  elBall1.style.width = ball1.size + 'px'
+  elBall1.style.height = ball1.size + 'px'
+  elBall1.style.backgroundColor = ball1.color
+  elBall1.innerText = ball1.size
+
+  elBall2.style.width = ball2.size + 'px'
+  elBall2.style.height = ball2.size + 'px'
+  elBall2.style.backgroundColor = ball2.color
+  elBall2.innerText = ball2.size
+}
+
+function onRedo() {
+  if (gStateIdx === gStates.length - 1) return
+  gStateIdx++
+  const currState = gStates[gStateIdx]
+  const ball1 = currState[0]
+  const ball2 = currState[1]
+
+  const elBall1 = document.querySelector('.ball1')
+  const elBall2 = document.querySelector('.ball2')
+
+  elBall1.style.width = ball1.size + 'px'
+  elBall1.style.height = ball1.size + 'px'
+  elBall1.style.backgroundColor = ball1.color
+  elBall1.innerText = ball1.size
+
+  elBall2.style.width = ball2.size + 'px'
+  elBall2.style.height = ball2.size + 'px'
+  elBall2.style.backgroundColor = ball2.color
+  elBall2.innerText = ball2.size
 }
