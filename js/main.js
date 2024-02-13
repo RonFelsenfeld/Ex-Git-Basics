@@ -4,6 +4,9 @@ var gStates
 var gStateIdx
 var gMovesCount
 
+var gStartTime
+var gTimerInterval
+
 var gSecondsHover = 0
 var gHoverInterval
 
@@ -55,11 +58,19 @@ function onResetGame() {
   elBall4.innerText = 'Change max diameters'
 
   document.body.style.backgroundColor = 'black'
+  stopTimer()
+  document.querySelector('.seconds').innerText = '00:'
+  document.querySelector('.milliseconds').innerText = '000'
 
   onInit()
 }
 
 function onBallClick(elBall) {
+  if (!gTimerInterval) {
+    gStartTime = Date.now()
+    startTimer()
+  }
+
   const maxDiameter = +elBall.dataset.maxDiameter
   const addSize = getRandomInt(20, 61)
   const newSize = Number.parseInt(elBall.style.width) + addSize
@@ -212,4 +223,30 @@ function onRedo() {
   elBall2.style.height = ball2.size + 'px'
   elBall2.style.backgroundColor = ball2.color
   elBall2.innerText = ball2.size
+}
+
+function startTimer() {
+  gTimerInterval = setInterval(() => {
+    const timeDiff = Date.now() - gStartTime
+
+    const seconds = getFormatSeconds(timeDiff)
+    const milliSeconds = getFormatMilliSeconds(timeDiff)
+
+    document.querySelector('.seconds').innerText = seconds
+    document.querySelector('.milliseconds').innerText = milliSeconds
+  }, 10)
+}
+
+function stopTimer() {
+  if (gTimerInterval) clearInterval(gTimerInterval)
+}
+
+function getFormatSeconds(timeDiff) {
+  const seconds = Math.floor(timeDiff / 1000)
+  return (seconds + '').padStart(2, '0')
+}
+
+function getFormatMilliSeconds(timeDiff) {
+  const milliSeconds = new Date(timeDiff).getMilliseconds()
+  return (milliSeconds + '').padStart(3, '0')
 }

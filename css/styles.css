@@ -16,7 +16,8 @@ body {
   padding-block-start: 30px;
 }
 
-.moves-title {
+.moves-title,
+.time-title {
   color: white;
 }
 
