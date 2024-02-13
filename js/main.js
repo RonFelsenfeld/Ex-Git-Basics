@@ -1,6 +1,6 @@
 'use strict'
 
-var gSize
+var gChanges
 
 var gSecondsHover = 0
 var gHoverInterval
@@ -9,7 +9,6 @@ var gHandlersInterval
 var gCycleCount = 0
 
 function onInit() {
-  gSize = 100
   renderBalls()
 }
 
@@ -21,12 +20,12 @@ function renderBalls() {
   const elBall5 = document.querySelector('.ball5')
   const elBall6 = document.querySelector('.ball6')
 
-  elBall1.style.width = gSize + 'px'
-  elBall1.style.height = gSize + 'px'
+  elBall1.style.width = '100px'
+  elBall1.style.height = '100px'
   elBall1.style.backgroundColor = getRandomColor()
 
-  elBall2.style.width = gSize + 'px'
-  elBall2.style.height = gSize + 'px'
+  elBall2.style.width = '100px'
+  elBall2.style.height = '100px'
   elBall2.style.backgroundColor = getRandomColor()
 
   elBall3.style.backgroundColor = getRandomColor()
@@ -55,13 +54,14 @@ function onResetGame() {
 
 function onBallClick(elBall) {
   const maxDiameter = +elBall.dataset.maxDiameter
-  gSize += getRandomInt(20, 61)
+  const addSize = getRandomInt(20, 61)
+  const newSize = Number.parseInt(elBall.style.width) + addSize
 
-  if (gSize > maxDiameter) gSize = 100
+  if (newSize > maxDiameter) newSize = 100
 
-  elBall.style.width = gSize + 'px'
-  elBall.style.height = gSize + 'px'
-  elBall.innerText = gSize
+  elBall.style.width = newSize + 'px'
+  elBall.style.height = newSize + 'px'
+  elBall.innerText = newSize
 }
 
 function onThirdBallClick() {
