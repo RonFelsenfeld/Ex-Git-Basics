@@ -20,7 +20,8 @@ function onInit() {
   elBall4.style.backgroundColor = getRandomColor()
 }
 
-function onBallClick(elBall, maxDiameter) {
+function onBallClick(elBall) {
+  const maxDiameter = +elBall.dataset.maxDiameter
   gSize += getRandomInt(20, 61)
 
   if (gSize > maxDiameter) gSize = 100
@@ -38,4 +39,17 @@ function onThirdBallClick() {
   const tempColor = elBall1.style.backgroundColor
   elBall1.style.backgroundColor = elBall2.style.backgroundColor
   elBall2.style.backgroundColor = tempColor
+}
+
+function onFourthBallClick() {
+  const elBall1 = document.querySelector('.ball1')
+  const elBall2 = document.querySelector('.ball2')
+
+  const decreaseSize = getRandomInt(20, 61)
+
+  elBall1.dataset.maxDiameter -= decreaseSize
+  elBall2.dataset.maxDiameter -= decreaseSize
+
+  if (elBall1.dataset.maxDiameter < 100) elBall1.dataset.maxDiameter = 100
+  if (elBall2.dataset.maxDiameter < 100) elBall2.dataset.maxDiameter = 100
 }
