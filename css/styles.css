@@ -24,4 +24,6 @@ h1 {
 
   border-radius: 50%;
   background-color: lightblue;
+
+  transition: 1s;
 }
