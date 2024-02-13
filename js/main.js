@@ -1,9 +1,17 @@
 'use strict'
 
-function onBallClick(elBall) {
-  const newSize = elBall.clientWidth + 50
+var gSize = 100
 
-  elBall.style.width = newSize + 'px'
-  elBall.style.height = newSize + 'px'
-  elBall.innerText = newSize
+function onInit() {
+  const elBall = document.querySelector('.ball')
+  elBall.style.width = gSize + 'px'
+  elBall.style.height = gSize + 'px'
+}
+
+function onBallClick(elBall) {
+  gSize += 50
+
+  elBall.style.width = gSize + 'px'
+  elBall.style.height = gSize + 'px'
+  elBall.innerText = gSize
 }
