@@ -3,11 +3,16 @@
 var gSize = 100
 
 function onInit() {
-  const elBall = document.querySelector('.ball')
+  const elBall1 = document.querySelector('.ball2')
+  const elBall2 = document.querySelector('.ball1')
 
-  elBall.style.width = gSize + 'px'
-  elBall.style.height = gSize + 'px'
-  elBall.style.backgroundColor = getRandomColor()
+  elBall1.style.width = gSize + 'px'
+  elBall1.style.height = gSize + 'px'
+  elBall1.style.backgroundColor = getRandomColor()
+
+  elBall2.style.width = gSize + 'px'
+  elBall2.style.height = gSize + 'px'
+  elBall2.style.backgroundColor = getRandomColor()
 }
 
 function onBallClick(elBall) {
