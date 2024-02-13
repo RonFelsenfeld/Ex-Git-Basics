@@ -21,9 +21,6 @@ h1 {
   font-weight: bold;
 
   margin: 50px auto;
-
   border-radius: 50%;
-  background-color: lightblue;
-
   transition: 1s;
 }
