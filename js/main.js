@@ -64,3 +64,7 @@ function onFourthBallClick(elBall) {
   if (elBall1.dataset.maxDiameter < 100) elBall1.dataset.maxDiameter = 100
   if (elBall2.dataset.maxDiameter < 100) elBall2.dataset.maxDiameter = 100
 }
+
+function onFifthBallClick() {
+  document.body.style.backgroundColor = getRandomColor()
+}
