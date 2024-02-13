@@ -2,6 +2,12 @@
 
 var gSize
 
+var gSecondsHover = 0
+var gHoverInterval
+
+var gHandlersInterval
+var gCycleCount = 0
+
 function onInit() {
   gSize = 100
   renderBalls()
@@ -36,6 +42,10 @@ function onResetGame() {
 
   elBall1.dataset.maxDiameter = 400
   elBall2.dataset.maxDiameter = 500
+
+  elBall1.innerText = '100'
+  elBall2.innerText = '100'
+
   elBall4.innerText = 'Change max diameters'
 
   document.body.style.backgroundColor = 'black'
@@ -52,7 +62,6 @@ function onBallClick(elBall) {
   elBall.style.width = gSize + 'px'
   elBall.style.height = gSize + 'px'
   elBall.innerText = gSize
-  elBall.style.backgroundColor = getRandomColor()
 }
 
 function onThirdBallClick() {
@@ -88,4 +97,40 @@ function onFourthBallClick(elBall) {
 
 function onFifthBallClick() {
   document.body.style.backgroundColor = getRandomColor()
+}
+
+function onHover() {
+  gHoverInterval = setInterval(() => {
+    gSecondsHover++
+
+    if (gSecondsHover >= 2) {
+      gHandlersInterval = setInterval(executeAllHandlers, 2000)
+      clearInterval(gHoverInterval)
+    }
+  }, 1000)
+}
+
+function onOutHover() {
+  gSecondsHover = 0
+  clearInterval(gHoverInterval)
+  clearInterval(gHandlersInterval)
+}
+
+function executeAllHandlers() {
+  gCycleCount++
+
+  if (gCycleCount > 10) {
+    clearInterval(gHandlersInterval)
+    gCycleCount = 0
+    return
+  }
+
+  const elBall1 = document.querySelector('.ball1')
+  const elBall2 = document.querySelector('.ball2')
+  const elBall4 = document.querySelector('.ball4')
+
+  onBallClick(elBall1)
+  onBallClick(elBall2)
+  onThirdBallClick()
+  onFourthBallClick(elBall4)
 }
