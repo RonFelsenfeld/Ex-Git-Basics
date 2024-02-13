@@ -8,32 +8,54 @@
   </head>
 
   <body onload="onInit()">
-    <h1>The Ball Game</h1>
-    <div class="ball ball1" onclick="onBallClick(this)" data-max-diameter="400">
-      100
-    </div>
+    <header class="header">
+      <h1>The Ball Game</h1>
 
-    <div class="ball ball2" onclick="onBallClick(this)" data-max-diameter="500">
-      100
-    </div>
+      <div class="btns-container">
+        <button class="btn btn-undo">Undo</button>
+        <button class="btn btn-redo">Redo</button>
+      </div>
+    </header>
 
-    <div class="ball ball3" onclick="onThirdBallClick()">Change colors</div>
+    <div class="main-container">
+      <div class="main-balls">
+        <div
+          class="ball ball1"
+          onclick="onBallClick(this)"
+          data-max-diameter="400"
+        >
+          100
+        </div>
 
-    <div class="ball ball4" onclick="onFourthBallClick(this)">
-      Change max diameters
-    </div>
+        <div
+          class="ball ball2"
+          onclick="onBallClick(this)"
+          data-max-diameter="500"
+        >
+          100
+        </div>
+      </div>
 
-    <div class="ball ball5" onclick="onFifthBallClick()">
-      Change background color
-    </div>
+      <div class="extra-balls">
+        <div class="ball ball3" onclick="onThirdBallClick()">Change colors</div>
 
-    <div
-      class="ball ball6"
-      onclick="onResetGame()"
-      onmouseenter="onHover()"
-      onmouseleave="onOutHover()"
-    >
-      Reset
+        <div class="ball ball4" onclick="onFourthBallClick(this)">
+          Change max diameters
+        </div>
+
+        <div class="ball ball5" onclick="onFifthBallClick()">
+          Change background color
+        </div>
+
+        <div
+          class="ball ball6"
+          onclick="onResetGame()"
+          onmouseenter="onHover()"
+          onmouseleave="onOutHover()"
+        >
+          Reset
+        </div>
+      </div>
     </div>
 
     <script src="js/util.js"></script>

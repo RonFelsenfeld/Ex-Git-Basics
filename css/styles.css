@@ -9,8 +9,39 @@ body {
   transition: 0.3s;
 }
 
+.header {
+  display: flex;
+  justify-content: space-around;
+
+  padding-block-start: 30px;
+}
+
+.btns-container {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.btn {
+  border: none;
+  border-radius: 15px;
+  background-color: yellow;
+  padding: 10px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: rgb(137, 137, 4);
+}
+
 h1 {
   color: white;
+}
+
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .ball {
