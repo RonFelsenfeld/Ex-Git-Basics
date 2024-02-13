@@ -2,6 +2,7 @@
 
 var gStates
 var gStateIdx
+var gMovesCount
 
 var gSecondsHover = 0
 var gHoverInterval
@@ -12,6 +13,7 @@ var gCycleCount = 0
 function onInit() {
   gStates = []
   gStateIdx = 0
+  gMovesCount = 0
   renderBalls()
 }
 
@@ -167,6 +169,7 @@ function addBallsState() {
   }
 
   gStates.push([ball1, ball2])
+  document.querySelector('.moves').innerText = gMovesCount++
 }
 
 function onUndo() {

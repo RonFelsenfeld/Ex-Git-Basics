@@ -16,6 +16,10 @@ body {
   padding-block-start: 30px;
 }
 
+.moves-title {
+  color: white;
+}
+
 .btns-container {
   width: 20%;
   display: flex;
