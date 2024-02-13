@@ -9,7 +9,7 @@ function onInit() {
 }
 
 function onBallClick(elBall) {
-  gSize += 50
+  gSize += getRandomInt(20, 61)
 
   if (gSize > 400) gSize = 100
 
