@@ -41,11 +41,19 @@ function onThirdBallClick() {
   elBall2.style.backgroundColor = tempColor
 }
 
-function onFourthBallClick() {
+function onFourthBallClick(elBall) {
   const elBall1 = document.querySelector('.ball1')
   const elBall2 = document.querySelector('.ball2')
+  if (
+    +elBall1.dataset.maxDiameter === 100 &&
+    +elBall2.dataset.maxDiameter === 100
+  ) {
+    elBall.innerText = `Finished`
+    return
+  }
 
   const decreaseSize = getRandomInt(20, 61)
+  elBall.innerText = `Decreased by ${decreaseSize}`
 
   elBall1.dataset.maxDiameter -= decreaseSize
   elBall2.dataset.maxDiameter -= decreaseSize
