@@ -28,3 +28,12 @@ function onBallClick(elBall, maxDiameter) {
   elBall.innerText = gSize
   elBall.style.backgroundColor = getRandomColor()
 }
+
+function onThirdBallClick() {
+  const elBall1 = document.querySelector('.ball1')
+  const elBall2 = document.querySelector('.ball2')
+
+  const tempColor = elBall1.style.backgroundColor
+  elBall1.style.backgroundColor = elBall2.style.backgroundColor
+  elBall2.style.backgroundColor = tempColor
+}
