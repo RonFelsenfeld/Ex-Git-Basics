@@ -1,6 +1,7 @@
 'use strict'
 
-var gChanges
+var gStates
+var gStateIdx
 
 var gSecondsHover = 0
 var gHoverInterval
@@ -9,6 +10,8 @@ var gHandlersInterval
 var gCycleCount = 0
 
 function onInit() {
+  gStates = []
+  gStateIdx = 0
   renderBalls()
 }
 
@@ -32,6 +35,8 @@ function renderBalls() {
   elBall4.style.backgroundColor = getRandomColor()
   elBall5.style.backgroundColor = getRandomColor()
   elBall6.style.backgroundColor = getRandomColor()
+
+  addBallsState(elBall1, elBall2)
 }
 
 function onResetGame() {
@@ -62,6 +67,8 @@ function onBallClick(elBall) {
   elBall.style.width = newSize + 'px'
   elBall.style.height = newSize + 'px'
   elBall.innerText = newSize
+
+  addBallsState()
 }
 
 function onThirdBallClick() {
@@ -71,6 +78,8 @@ function onThirdBallClick() {
   const tempColor = elBall1.style.backgroundColor
   elBall1.style.backgroundColor = elBall2.style.backgroundColor
   elBall2.style.backgroundColor = tempColor
+
+  addBallsState()
 }
 
 function onFourthBallClick(elBall) {
@@ -133,4 +142,27 @@ function executeAllHandlers() {
   onBallClick(elBall2)
   onThirdBallClick()
   onFourthBallClick(elBall4)
+}
+
+function addBallsState() {
+  const elBall1 = document.querySelector('.ball1')
+  const elBall2 = document.querySelector('.ball2')
+
+  const ball1Size = Number.parseInt(elBall1.style.width)
+  const ball1Color = elBall1.style.backgroundColor
+
+  const ball2Size = Number.parseInt(elBall2.style.width)
+  const ball2Color = elBall2.style.backgroundColor
+
+  const ball1 = {
+    size: ball1Size,
+    color: ball1Color,
+  }
+
+  const ball2 = {
+    size: ball2Size,
+    color: ball2Color,
+  }
+
+  gStates.push([ball1, ball2])
 }
