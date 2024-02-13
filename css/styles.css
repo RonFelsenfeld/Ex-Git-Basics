@@ -24,3 +24,8 @@ h1 {
   border-radius: 50%;
   transition: 1s;
 }
+
+.ball3 {
+  width: 150px;
+  height: 150px;
+}
